@@ -276,6 +276,9 @@ let current='dashboard';function render(){renderDashboard();renderCalendar();ren
  document.getElementById('cloudLogin').onsubmit=e=>{e.preventDefault();auth(false)};document.getElementById('cloudRegister').onclick=()=>auth(true);
  document.getElementById('cloudLogout').onclick=()=>{session=null;persistSession();draw();setStatus('Abgemeldet')};
  document.getElementById('stravaConnect').onclick=stravaStart;
+ document.getElementById('stravaImportTest').onclick=()=>stravaImport(false);
+ document.getElementById('stravaImportMore').onclick=()=>stravaImport(true);
+ document.getElementById('stravaImportReset').onclick=()=>{if(importBusy)return;importPage=1;importTotals={imported:0,skipped:0,failed:0};importMessage='Import zurückgesetzt. Bereit für Seite 1.';draw()};
  document.getElementById('cloudPush').onclick=manualPush;document.getElementById('cloudPull').onclick=manualPull;
  }
  auto=localStorage.getItem('velocoach-auto-v16')!=='false';draw();
